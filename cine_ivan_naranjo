@@ -1,0 +1,30 @@
+CREATE DATABASE cine_ivan_naranjo;
+USE cine_nombreyapellido;
+
+CREATE TABLE generos (
+    id_genero INT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE peliculas (
+    codigo_pelicula VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    director VARCHAR(100) NOT NULL,
+    duracion INT NOT NULL,
+    anio_estreno INT NOT NULL,
+    id_genero INT NOT NULL,
+    FOREIGN KEY (id_genero) REFERENCES generos(id_genero)
+);
+
+INSERT INTO generos (id_genero, nombre) VALUES
+(1, 'Acción'),
+(2, 'Drama'),
+(3, 'Comedia'),
+(4, 'Ciencia Ficción');
+
+INSERT INTO peliculas (codigo_pelicula, titulo, director, duracion, anio_estreno, id_genero) VALUES
+('PEL001', 'Mad Max: Fury Road', 'George Miller', 120, 2015, 1),
+('PEL002', 'El Padrino', 'Francis Ford Coppola', 175, 1972, 2),
+('PEL003', 'Superbad', 'Greg Mottola', 113, 2007, 3),
+('PEL004', 'Interstellar', 'Christopher Nolan', 169, 2014, 4),
+('PEL005', 'Inception', 'Christopher Nolan', 148, 2010, 4);
